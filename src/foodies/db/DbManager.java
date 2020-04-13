@@ -188,4 +188,18 @@ public class DbManager {
 
         return itemList;
     }
+    
+    public static void insertItem(Item item) {
+        try {
+            PreparedStatement ps = DbConnection.getInstance().prepareStatement("Insert Into Item(name,price,description,item_type_id) Select ?,?,?,item_type_id from item_type where item_type = ?");
+            ps.setString(1, item.getName());
+            ps.setInt(2, item.getPrice());
+            ps.setString(3, item.getDescription());
+            ps.setString(4, item.getItemType().getItemType());
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

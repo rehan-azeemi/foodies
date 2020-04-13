@@ -68,4 +68,10 @@ public class Item {
     public String getItemTypeString(){
         return this.getItemType().getItemType();
     }
+    
+    public void setItemTypeString(String itemType){
+         ItemType type = new ItemType();
+         type.setItemType(itemType);
+         this.setItemType(type);
+    }
 }
